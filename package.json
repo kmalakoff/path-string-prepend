@@ -27,9 +27,9 @@
     "test:engines": "nvu engines npm test"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.1",
     "depcheck": "^1.4.3",
-    "eslint": "^8.21.0",
+    "eslint": "^8.22.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
