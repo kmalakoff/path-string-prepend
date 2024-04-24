@@ -1,101 +1,101 @@
-var assert = require('assert');
+const assert = require('assert');
 
-var prepend = require('../..');
+const prepend = require('path-string-prepend');
 
-describe('delimiter', function () {
-  describe(':', function () {
-    var DELIMITER = ':';
+describe('delimiter', () => {
+  describe(':', () => {
+    const DELIMITER = ':';
 
-    it('prepends - exists at front', function () {
-      var envPaths = ['install/path', 'other/path', 'another/path'];
-      var envPath = envPaths.join(DELIMITER);
+    it('prepends - exists at front', () => {
+      const envPaths = ['install/path', 'other/path', 'another/path'];
+      const envPath = envPaths.join(DELIMITER);
 
-      var path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
+      const path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
       assert.equal(path, envPath);
     });
 
-    it('prepends - removes extra', function () {
-      var envPaths = ['install/path', 'other/path', 'another/path', 'install/path', 'other/path', 'another/path'];
-      var envPath = envPaths.join(DELIMITER);
+    it('prepends - removes extra', () => {
+      const envPaths = ['install/path', 'other/path', 'another/path', 'install/path', 'other/path', 'another/path'];
+      const envPath = envPaths.join(DELIMITER);
 
-      var path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
+      const path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
       envPaths.splice(3, 1);
       assert.equal(path, envPaths.join(DELIMITER));
     });
 
-    it('prepends - removes extras', function () {
-      var envPaths = ['install/path', 'other/path', 'another/path', 'install/path', 'other/path', 'another/path', 'install/path'];
-      var envPath = envPaths.join(DELIMITER);
+    it('prepends - removes extras', () => {
+      const envPaths = ['install/path', 'other/path', 'another/path', 'install/path', 'other/path', 'another/path', 'install/path'];
+      const envPath = envPaths.join(DELIMITER);
 
-      var path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
+      const path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
       envPaths.splice(6, 1);
       envPaths.splice(3, 1);
       assert.equal(path, envPaths.join(DELIMITER));
     });
 
-    it('adds missing no entries', function () {
-      var envPaths = ['other/path', 'another/path', 'other/path', 'another/path'];
-      var envPath = envPaths.join(DELIMITER);
+    it('adds missing no entries', () => {
+      const envPaths = ['other/path', 'another/path', 'other/path', 'another/path'];
+      const envPath = envPaths.join(DELIMITER);
 
-      var path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
-      assert.equal(path, 'install/path' + DELIMITER + envPaths.join(DELIMITER));
+      const path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
+      assert.equal(path, `install/path${DELIMITER}${envPaths.join(DELIMITER)}`);
     });
 
-    it('adds missing and removes middle', function () {
-      var envPaths = ['other/path', 'another/path', 'install/path', 'other/path', 'another/path'];
-      var envPath = envPaths.join(DELIMITER);
+    it('adds missing and removes middle', () => {
+      const envPaths = ['other/path', 'another/path', 'install/path', 'other/path', 'another/path'];
+      const envPath = envPaths.join(DELIMITER);
 
-      var path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
+      const path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
       envPaths.splice(2, 1);
-      assert.equal(path, 'install/path' + DELIMITER + envPaths.join(DELIMITER));
+      assert.equal(path, `install/path${DELIMITER}${envPaths.join(DELIMITER)}`);
     });
   });
 
-  describe(';', function () {
-    var DELIMITER = ';';
+  describe(';', () => {
+    const DELIMITER = ';';
 
-    it('prepends - exists at front', function () {
-      var envPaths = ['install/path', 'other/path', 'another/path'];
-      var envPath = envPaths.join(DELIMITER);
+    it('prepends - exists at front', () => {
+      const envPaths = ['install/path', 'other/path', 'another/path'];
+      const envPath = envPaths.join(DELIMITER);
 
-      var path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
+      const path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
       assert.equal(path, envPath);
     });
 
-    it('prepends - removes extra', function () {
-      var envPaths = ['install/path', 'other/path', 'another/path', 'install/path', 'other/path', 'another/path'];
-      var envPath = envPaths.join(DELIMITER);
+    it('prepends - removes extra', () => {
+      const envPaths = ['install/path', 'other/path', 'another/path', 'install/path', 'other/path', 'another/path'];
+      const envPath = envPaths.join(DELIMITER);
 
-      var path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
+      const path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
       envPaths.splice(3, 1);
       assert.equal(path, envPaths.join(DELIMITER));
     });
 
-    it('prepends - removes extras', function () {
-      var envPaths = ['install/path', 'other/path', 'another/path', 'install/path', 'other/path', 'another/path', 'install/path'];
-      var envPath = envPaths.join(DELIMITER);
+    it('prepends - removes extras', () => {
+      const envPaths = ['install/path', 'other/path', 'another/path', 'install/path', 'other/path', 'another/path', 'install/path'];
+      const envPath = envPaths.join(DELIMITER);
 
-      var path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
+      const path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
       envPaths.splice(6, 1);
       envPaths.splice(3, 1);
       assert.equal(path, envPaths.join(DELIMITER));
     });
 
-    it('adds missing no entries', function () {
-      var envPaths = ['other/path', 'another/path', 'other/path', 'another/path'];
-      var envPath = envPaths.join(DELIMITER);
+    it('adds missing no entries', () => {
+      const envPaths = ['other/path', 'another/path', 'other/path', 'another/path'];
+      const envPath = envPaths.join(DELIMITER);
 
-      var path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
-      assert.equal(path, 'install/path' + DELIMITER + envPaths.join(DELIMITER));
+      const path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
+      assert.equal(path, `install/path${DELIMITER}${envPaths.join(DELIMITER)}`);
     });
 
-    it('adds missing and removes middle', function () {
-      var envPaths = ['other/path', 'another/path', 'install/path', 'other/path', 'another/path'];
-      var envPath = envPaths.join(DELIMITER);
+    it('adds missing and removes middle', () => {
+      const envPaths = ['other/path', 'another/path', 'install/path', 'other/path', 'another/path'];
+      const envPath = envPaths.join(DELIMITER);
 
-      var path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
+      const path = prepend(envPath, 'install/path', { delimiter: DELIMITER });
       envPaths.splice(2, 1);
-      assert.equal(path, 'install/path' + DELIMITER + envPaths.join(DELIMITER));
+      assert.equal(path, `install/path${DELIMITER}${envPaths.join(DELIMITER)}`);
     });
   });
 });
