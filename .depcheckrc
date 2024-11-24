@@ -1,1 +1,1 @@
-ignores: ["depcheck"]
+ignores: ["path-string-prepend", "depcheck", "ts-dev-stack", "@types/*"]
