@@ -1,18 +1,18 @@
-var assert = require('assert');
+const assert = require('assert');
 
-var prepend = require('../..');
-var DELIMITER = process.platform === 'win32' ? ';' : ':';
+const prepend = require('path-string-prepend');
 
-describe('filter', function () {
-  it('prepends - exists at front', function () {
-    var envPaths = ['install/path', 'other/path', 'another/path'];
-    var envPath = envPaths.join(DELIMITER);
+const isWindows = process.platform === 'win32' || /^(msys|cygwin)$/.test(process.env.OSTYPE);
+const DELIMITER = isWindows ? ';' : ':';
 
-    var changes = prepend(envPath, 'install/path', {
+describe('filter', () => {
+  it('prepends - exists at front', () => {
+    const envPaths = ['install/path', 'other/path', 'another/path'];
+    const envPath = envPaths.join(DELIMITER);
+
+    const changes = prepend(envPath, 'install/path', {
       changes: true,
-      filter: function (path) {
-        return path !== 'other/path';
-      },
+      filter: (path) => path !== 'other/path',
     });
     assert.equal(changes.added.length, 0);
     assert.equal(changes.removed.length, 1);
@@ -20,15 +20,13 @@ describe('filter', function () {
     assert.equal(changes.path, envPaths.join(DELIMITER));
   });
 
-  it('prepends - removes extra', function () {
-    var envPaths = ['install/path', 'other/path', 'another/path', 'install/path', 'other/path', 'another/path'];
-    var envPath = envPaths.join(DELIMITER);
+  it('prepends - removes extra', () => {
+    const envPaths = ['install/path', 'other/path', 'another/path', 'install/path', 'other/path', 'another/path'];
+    const envPath = envPaths.join(DELIMITER);
 
-    var changes = prepend(envPath, 'install/path', {
+    const changes = prepend(envPath, 'install/path', {
       changes: true,
-      filter: function (path) {
-        return path !== 'other/path';
-      },
+      filter: (path) => path !== 'other/path',
     });
     assert.equal(changes.added.length, 0);
     assert.equal(changes.removed.length, 3);
