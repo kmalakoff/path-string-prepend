@@ -3,7 +3,8 @@
 Prepends a path to a platform-specfic delimited path string and removes duplicate paths.
 
 ```
-var DELIMITER = process.platform === 'win32' ? ';' : ':';
+var isWindows = process.platform === 'win32' || /^(msys|cygwin)$/.test(process.env.OSTYPE)
+var DELIMITER = isWindows ? ';' : ':';
 
 var prepend = once('path-string-prepend');
 var assert = require('assert');
