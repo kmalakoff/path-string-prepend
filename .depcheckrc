@@ -1,0 +1,1 @@
+ignores: ["path-string-prepend", "@types/*", "@biomejs/*"]
