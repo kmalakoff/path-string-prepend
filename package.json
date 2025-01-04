@@ -10,7 +10,7 @@
   "homepage": "https://github.com/kmalakoff/path-string-prepend",
   "repository": {
     "type": "git",
-    "url": "git@github.com:kmalakoff/path-string-prepend.git"
+    "url": "git+ssh://git@github.com/kmalakoff/path-string-prepend.git"
   },
   "license": "MIT",
   "author": "Kevin Malakoff <kmalakoff@gmail.com> (https://github.com/kmalakoff)",
