@@ -14,7 +14,7 @@
   },
   "license": "MIT",
   "author": "Kevin Malakoff <kmalakoff@gmail.com> (https://github.com/kmalakoff)",
-  "main": "dist/cjs/index.js",
+  "main": "dist/cjs/index.cjs",
   "types": "dist/types/index.d.ts",
   "files": [
     "dist"
@@ -22,17 +22,16 @@
   "scripts": {
     "build": "tsds build",
     "deploy": "tsds deploy",
+    "docs": "tsds docs",
     "format": "biome check --write --unsafe src/ test/",
-    "test": "tsds test:node --timeout=10000",
+    "test": "tsds test:node --no-timeouts",
     "test:engines": "nvu engines npm test",
     "version": "tsds version"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.10.1",
-    "depcheck": "^1.4.7",
-    "ts-dev-stack": "^0.17.0"
+    "@types/node": "^22.10.5"
   },
   "engines": {
     "node": ">=0.8"
