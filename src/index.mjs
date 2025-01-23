@@ -1,5 +1,7 @@
+import path from 'path';
+
 const isWindows = process.platform === 'win32' || /^(msys|cygwin)$/.test(process.env.OSTYPE);
-const pathDelimiter = isWindows ? ';' : ':';
+const pathDelimiter = path.delimiter || isWindows ? ';' : ':';
 
 function filterNone() {
   return true;
