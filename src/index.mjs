@@ -1,6 +1,5 @@
-import './polyfills.cjs';
-
-import path from 'path';
+const isWindows = process.platform === 'win32' || /^(msys|cygwin)$/.test(process.env.OSTYPE);
+const pathDelimiter = isWindows ? ';' : ':';
 
 function filterNone() {
   return true;
@@ -8,7 +7,7 @@ function filterNone() {
 
 export default function prepend(pathString, prependPath, options) {
   options = options || {};
-  const delimiter = options.delimiter || path.delimiter;
+  const delimiter = options.delimiter || pathDelimiter;
 
   const changes = { added: [], removed: [] };
   const parts = pathString.split(delimiter);
