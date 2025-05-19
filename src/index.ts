@@ -11,7 +11,7 @@ export default function prepend(pathString, prependPath, options) {
   options = options || {};
   const delimiter = options.delimiter || pathDelimiter;
 
-  const changes = { added: [], removed: [] };
+  const changes = { added: [], removed: [], path: '' };
   const parts = pathString.split(delimiter);
   const filter = options.filter || filterNone;
 
