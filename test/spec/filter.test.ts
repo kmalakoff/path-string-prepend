@@ -1,6 +1,7 @@
-const assert = require('assert');
+import assert from 'assert';
 
-const prepend = require('path-string-prepend');
+// @ts-ignore
+import prepend from 'path-string-prepend';
 
 const isWindows = process.platform === 'win32' || /^(msys|cygwin)$/.test(process.env.OSTYPE);
 const DELIMITER = isWindows ? ';' : ':';
