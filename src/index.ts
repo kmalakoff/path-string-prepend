@@ -5,15 +5,22 @@ const pathDelimiter = path.delimiter ? path.delimiter : isWindows ? ';' : ':';
 
 const filterNone = (_path?: string) => true;
 
+export interface PrependResult {
+  added: string[];
+  removed: string[];
+  path: string;
+}
+
 export interface PrependOptions {
   delimiter?: string;
   filter?: (_path?: string) => boolean;
   changes?: boolean;
 }
 
-export default function prepend(pathString: string, prependPath: string, options: PrependOptions = {}) {
+export default function prepend(pathString: string, prependPath: string, options?: PrependOptions): PrependResult;
+export default function prepend(pathString: string, prependPath: string, options?: PrependOptions): string;
+export default function prepend(pathString: string, prependPath: string, options: PrependOptions = {}): PrependResult | string {
   const delimiter = options.delimiter || pathDelimiter;
-
   const changes = { added: [], removed: [], path: '' };
   const parts = pathString.split(delimiter);
   const filter = options.filter || filterNone;
