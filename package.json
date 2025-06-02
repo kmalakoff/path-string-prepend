@@ -1,6 +1,6 @@
 {
   "name": "path-string-prepend",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "Prepends a path to a platform-specfic delimited path string and removes duplicate paths",
   "keywords": [
     "autonode",
