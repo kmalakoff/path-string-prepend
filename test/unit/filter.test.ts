@@ -1,7 +1,7 @@
 import assert from 'assert';
 
 // @ts-ignore
-import prepend from 'path-string-prepend';
+import prepend, { type PrependResult } from 'path-string-prepend';
 
 const isWindows = process.platform === 'win32' || /^(msys|cygwin)$/.test(process.env.OSTYPE);
 const DELIMITER = isWindows ? ';' : ':';
@@ -14,7 +14,7 @@ describe('filter', () => {
     const changes = prepend(envPath, 'install/path', {
       changes: true,
       filter: (path) => path !== 'other/path',
-    });
+    }) as PrependResult;
     assert.equal(changes.added.length, 0);
     assert.equal(changes.removed.length, 1);
     envPaths.splice(1, 1);
@@ -28,7 +28,7 @@ describe('filter', () => {
     const changes = prepend(envPath, 'install/path', {
       changes: true,
       filter: (path) => path !== 'other/path',
-    });
+    }) as PrependResult;
     assert.equal(changes.added.length, 0);
     assert.equal(changes.removed.length, 3);
     envPaths.splice(3, 2);
