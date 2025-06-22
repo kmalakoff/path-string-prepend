@@ -17,8 +17,6 @@ export interface PrependOptions {
   changes?: boolean;
 }
 
-export default function prepend(pathString: string, prependPath: string, options?: PrependOptions): string;
-export default function prepend(pathString: string, prependPath: string, options?: PrependOptions): PrependResult;
 export default function prepend(pathString: string, prependPath: string, options: PrependOptions = {}): PrependResult | string {
   const delimiter = options.delimiter || pathDelimiter;
   const changes = { added: [], removed: [], path: '' };
