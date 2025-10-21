@@ -1,6 +1,5 @@
 import assert from 'assert';
 
-// @ts-ignore
 import prepend from 'path-string-prepend';
 
 const isWindows = process.platform === 'win32' || /^(msys|cygwin)$/.test(process.env.OSTYPE);
