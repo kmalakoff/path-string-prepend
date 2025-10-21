@@ -1,6 +1,5 @@
 import assert from 'assert';
 
-// @ts-ignore
 import prepend from 'path-string-prepend';
 
 describe('delimiter', () => {
