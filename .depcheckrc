@@ -1,1 +1,1 @@
-ignores: ["node-version-use", "ts-dev-stack", "@biomejs/biome", "path-string-prepend"]
+ignores: ["node-version-use", "ts-dev-stack", "path-string-prepend"]
