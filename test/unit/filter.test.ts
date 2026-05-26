@@ -2,7 +2,7 @@ import assert from 'assert';
 
 import prepend, { type PrependResult } from 'path-string-prepend';
 
-const isWindows = process.platform === 'win32' || /^(msys|cygwin)$/.test(process.env.OSTYPE);
+const isWindows = process.platform === 'win32' || /^(msys|cygwin)$/.test(process.env.OSTYPE ?? '');
 const DELIMITER = isWindows ? ';' : ':';
 
 describe('filter', () => {
