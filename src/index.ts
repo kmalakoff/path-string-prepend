@@ -1,6 +1,6 @@
 import path from 'path';
 
-const isWindows = process.platform === 'win32' || /^(msys|cygwin)$/.test(process.env.OSTYPE);
+const isWindows = process.platform === 'win32' || /^(msys|cygwin)$/.test(process.env.OSTYPE ?? '');
 const pathDelimiter = path.delimiter ? path.delimiter : isWindows ? ';' : ':';
 
 const filterNone = (_path?: string) => true;
@@ -19,7 +19,7 @@ export interface PrependOptions {
 
 export default function prepend(pathString: string, prependPath: string, options: PrependOptions = {}): PrependResult | string {
   const delimiter = options.delimiter || pathDelimiter;
-  const changes = { added: [], removed: [], path: '' };
+  const changes: PrependResult = { added: [], removed: [], path: '' };
   const parts = pathString.split(delimiter);
   const filter = options.filter || filterNone;
 
