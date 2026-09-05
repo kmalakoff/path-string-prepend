@@ -1,1 +1,1 @@
-ignores: ["node-version-use", "ts-dev-stack", "path-string-prepend"]
+ignores: ["path-string-prepend", "node-version-use", "ts-dev-stack"]
