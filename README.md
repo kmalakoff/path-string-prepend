@@ -1,15 +1,29 @@
-## path-string-prepend
+# path-string-prepend
 
-Prepends a path to a platform-specfic delimited path string and removes duplicate paths.
+Prepends a path to a platform-specific delimited path string and removes every later entry whose string contains that path.
 
+## Installation
+
+```sh
+npm install path-string-prepend
 ```
-var isWindows = process.platform === 'win32' || /^(msys|cygwin)$/.test(process.env.OSTYPE)
-var DELIMITER = isWindows ? ';' : ':';
 
-var prepend = once('path-string-prepend');
+## Usage
+
+```js
 var assert = require('assert');
+var prepend = require('path-string-prepend');
 
-var envPath = ['other/path', 'another/path', 'install/path', 'other/path', 'another/path'].join(DELIMITER);
-var pathsString = prepend(envPath, 'install/path');
-assert(pathsString, ['install/path', 'other/path', 'another/path', 'other/path', 'another/path'].join(DELIMITER))
+var delimiter = require('path').delimiter;
+var envPath = ['other/path', 'install/path', 'another/path', 'install/path'].join(delimiter);
+var result = prepend(envPath, 'install/path');
+
+assert.equal(result, ['install/path', 'other/path', 'another/path'].join(delimiter));
+console.log(result);
 ```
+
+The default delimiter is `:` on POSIX and `;` on Windows. By default, an entry is removed when it contains the prepended path string. Pass `{ delimiter, filter }` to customize filtering, or `{ changes: true }` to receive `added`, `removed`, and `path` fields.
+
+## License
+
+MIT
